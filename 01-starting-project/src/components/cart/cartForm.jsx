@@ -23,20 +23,15 @@ const CartForm = (props) => {
       );
 
       console.log(resData);
+      cartCtx.clearItem();
+      props.onOrderSuccess();
+      props.onClose();
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleClose = () => {
-    setInform({
-      name: "",
-      email: "",
-      street: "",
-      postal: "",
-      city: "",
-    });
-
     props.onClose();
   };
 

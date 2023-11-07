@@ -44,11 +44,17 @@ const CartProvider = (props) => {
     setCart(updatedItems);
   };
 
+  const handleClearCart = () => {
+    setTotalAmount(0);
+    setCart([]);
+  };
+
   const cartContext = {
     items: cart,
     totalAmount: totalAmount,
     addItem: handleAddToCart,
     removeItem: handleRemoveFromCart,
+    clearItem: handleClearCart,
   };
 
   return (

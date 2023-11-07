@@ -5,10 +5,12 @@ import CartProvider from "./components/store/cartProvider";
 import Cart from "./components/cart/cart";
 import Modal from "./components/modal";
 import CartForm from "./components/cart/cartForm";
+import OrderSuccess from "./components/cart/orderSuccess";
 
 function App() {
   const [isShowCart, setIsShowCart] = useState(false);
   const [isShowCartForm, setIsShowCartForm] = useState(false);
+  const [isOrderSuccess, setIsOrderSuccess] = useState(false);
 
   return (
     <CartProvider>
@@ -18,8 +20,14 @@ function App() {
           onShowCartForm={() => setIsShowCartForm(true)}
         />
       </Modal>
+      <Modal open={isOrderSuccess}>
+        <OrderSuccess onClose={() => setIsOrderSuccess(false)} />
+      </Modal>
       <Modal open={isShowCartForm}>
-        <CartForm onClose={() => setIsShowCartForm(false)} />
+        <CartForm
+          onClose={() => setIsShowCartForm(false)}
+          onOrderSuccess={() => setIsOrderSuccess(true)}
+        />
       </Modal>
       <Header onShowCart={() => setIsShowCart(true)} />
       <Meals />

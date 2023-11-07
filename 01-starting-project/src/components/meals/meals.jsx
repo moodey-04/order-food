@@ -28,16 +28,11 @@ const Meals = () => {
       {isLoading ? (
         <>
           {meals.map((item) => {
-            return (
-              <MealItem
-                key={item.id}
-                item={item}
-              />
-            );
+            return <MealItem key={item.id} item={item} />;
           })}
         </>
       ) : (
-        <></>
+        <>Fetching meal...</>
       )}
     </div>
   );
